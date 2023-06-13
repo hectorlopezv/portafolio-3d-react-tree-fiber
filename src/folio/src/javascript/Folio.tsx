@@ -18,28 +18,7 @@ import GlowsPass from './Passes/Glows.js'
 
 const Folio = () => {
     
-  useEffect(() => {
-    // Set up
-    time.current = new Time();
-    sizes.current = new Sizes();
-    resources.current = new Resources();
-    setConfig();
-    setDebug();
-    setCamera();
-    setPasses();
-    setWorld();
-    setTitle();
-    setThreejsJourney();
 
-    return () => {
-      time.current.off('tick');
-      sizes.current.off('resize');
-      camera.current.orbitControls.dispose();
-      renderer.dispose();
-      debug.current?.destroy();
-      scene.remove(world.current.container);
-    };
-  }, []);
   const time = useRef<any>();
   const sizes = useRef<any>();
   const resources = useRef<any>();
@@ -199,6 +178,28 @@ const Folio = () => {
       time: time.current,
       world: world.current
     });
+  }, []);
+  useEffect(() => {
+    // Set up
+    time.current = new Time();
+    sizes.current = new Sizes();
+    resources.current = new Resources();
+    setConfig();
+    setDebug();
+    setCamera();
+    setPasses();
+    setWorld();
+    setTitle();
+    setThreejsJourney();
+
+    return () => {
+      time.current.off('tick');
+      sizes.current.off('resize');
+      camera.current.orbitControls.dispose();
+      renderer.dispose();
+      debug.current?.destroy();
+      scene.remove(world.current.container);
+    };
   }, []);
   return null;
 };
