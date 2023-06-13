@@ -1,7 +1,6 @@
 import * as THREE from "three";
 import Areas from "./Areas.js";
 import Car from "./Car.js";
-import Floor from "./Floor.js";
 import Materials from "./Materials.js";
 import Objects from "./Objects.js";
 import Physics from "./Physics.js";
@@ -49,7 +48,6 @@ export default class {
         // this.setAxes()
         this.setSounds();
         this.setControls();
-        this.setFloor();
         this.setAreas();
         this.setStartingScreen();
     }
@@ -350,13 +348,7 @@ export default class {
         });
     }
 
-    setFloor() {
-        this.floor = new Floor({
-            debug: this.debugFolder,
-        });
 
-        this.container.add(this.floor.container);
-    }
 
     setShadows() {
         this.shadows = new Shadows({
