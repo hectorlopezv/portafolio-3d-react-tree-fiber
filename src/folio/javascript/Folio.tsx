@@ -64,7 +64,6 @@ const Folio = () => {
   const setConfig = useCallback(() => {
     config.current = {
       debug: window.location.hash === "#debug",
-      cyberTruck: window.location.hash === "#cybertruck",
       touch: false,
     };
     window.addEventListener(

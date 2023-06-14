@@ -1,20 +1,31 @@
-import { useGLTF } from "@react-three/drei/index.cjs";
-import { useEffect } from "react";
-import { Mesh } from "three";
-import { useGetMaterial } from "../hooks/materials/useGetMaterial";
+import { useGLTF, useTexture } from "@react-three/drei/index.cjs";
+import { forwardRef, useEffect } from "react";
+import { Mesh, PlaneGeometry } from "three";
+import { isFloor, useGetMaterial } from "../hooks/materials/useGetMaterial";
 
 interface FolioModelProps {
   path: string;
+  floorShadowPath: string;
 }
-export default function FolioModel({ path }: FolioModelProps) {
-  const gltf = useGLTF(path);
-  const getMaterial = useGetMaterial();
-  useEffect((): void => {
-    gltf.scene.traverse((child): void => {
-      if (!(child instanceof Mesh)) return;
 
-      child.material = getMaterial(child.name);
-    });
-  }, []);
-  return <primitive object={gltf.scene} />;
-}
+const FolioModel = forwardRef(
+  ({ path, floorShadowPath }: FolioModelProps, ref) => {
+    const gltf = useGLTF(path);
+    const floorShadowTexture = useTexture(floorShadowPath);
+    const getMaterial = useGetMaterial();
+    useEffect((): void => {
+      gltf.scene.traverse((child): void => {
+        if (!(child instanceof Mesh)) return;
+
+        if (isFloor(child.name)) {
+          child.geometry = new PlaneGeometry();
+        }
+
+        child.material = getMaterial(child.name, floorShadowTexture);
+      });
+    }, [getMaterial]);
+    return <primitive object={gltf.scene} ref={ref} />;
+  }
+);
+FolioModel.displayName = "FolioModel";
+export default FolioModel;

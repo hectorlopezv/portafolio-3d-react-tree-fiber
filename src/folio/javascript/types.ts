@@ -12,7 +12,6 @@ import Physics from "./World/Physics";
 
 export interface Config {
   debug: boolean;
-  cyberTruck: boolean;
   touch: boolean;
 }
 

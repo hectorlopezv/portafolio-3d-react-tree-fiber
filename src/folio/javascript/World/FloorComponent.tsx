@@ -1,21 +1,44 @@
 /* eslint-disable react/no-unknown-property */
 import { Plane } from "@react-three/drei/index.cjs";
-import { useControls } from "leva";
+import { folder, useControls } from "leva";
+import { LEVA_FOLDERS } from "../constants";
 
 export default function FloorComponent() {
   const { topLeftColor, topRightColor, bottomLeftColor, bottomRightColor } =
     useControls(
+      LEVA_FOLDERS.materials.label,
       {
-        topLeftColor: "#f5883c",
-        topRightColor: "#ff9043",
-        bottomLeftColor: "#f5aa58",
-        bottomRightColor: "#fccf92",
+        [LEVA_FOLDERS.floor.label]: folder(
+          {
+            topLeftColor: {
+              value: "#f5883c",
+              label: "Top left color",
+            },
+            topRightColor: {
+              value: "#ff9043",
+              label: "Top right color",
+            },
+            bottomLeftColor: {
+              value: "#f5aa58",
+              label: "Bottom left color",
+            },
+            bottomRightColor: {
+              value: "#fccf92",
+              label: "Bottom right color",
+            },
+          },
+          {
+            collapsed: true,
+            color: LEVA_FOLDERS.floor.color,
+          }
+        ),
       },
       {
         collapsed: true,
-        color: "#f58e11",
+        color: LEVA_FOLDERS.materials.color,
       }
     );
+
   return (
     <Plane args={[2, 2]} frustumCulled={false} matrixAutoUpdate={false}>
       <floorMaterial

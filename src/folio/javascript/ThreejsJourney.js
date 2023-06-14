@@ -30,8 +30,7 @@ export default class ThreejsJourney
             return
 
         this.setYesNo()
-        this.setLog()
-
+       
         this.time.on('tick', () =>
         {
             if(this.world.physics)
@@ -53,7 +52,7 @@ export default class ThreejsJourney
         {
             TweenLite.delayedCall(2, () =>
             {
-                this.hide()
+                // this.hide()
             })
             window.localStorage.setItem('threejsJourneyPrevent', 1)
         })
@@ -64,74 +63,41 @@ export default class ThreejsJourney
 
             TweenLite.delayedCall(5, () =>
             {
-                this.hide()
+                // this.hide()
             })
         })
 
         // Hovers
-        this.$yes.addEventListener('mouseenter', () =>
-        {
-            this.$container.classList.remove('is-hover-none')
-            this.$container.classList.remove('is-hover-no')
-            this.$container.classList.add('is-hover-yes')
-        })
+        // this.$yes.addEventListener('mouseenter', () =>
+        // {
+        //     this.$container.classList.remove('is-hover-none')
+        //     this.$container.classList.remove('is-hover-no')
+        //     this.$container.classList.add('is-hover-yes')
+        // })
 
-        this.$no.addEventListener('mouseenter', () =>
-        {
-            this.$container.classList.remove('is-hover-none')
-            this.$container.classList.add('is-hover-no')
-            this.$container.classList.remove('is-hover-yes')
-        })
+        // this.$no.addEventListener('mouseenter', () =>
+        // {
+        //     this.$container.classList.remove('is-hover-none')
+        //     this.$container.classList.add('is-hover-no')
+        //     this.$container.classList.remove('is-hover-yes')
+        // })
 
-        this.$yes.addEventListener('mouseleave', () =>
-        {
-            this.$container.classList.add('is-hover-none')
-            this.$container.classList.remove('is-hover-no')
-            this.$container.classList.remove('is-hover-yes')
-        })
+        // this.$yes.addEventListener('mouseleave', () =>
+        // {
+        //     this.$container.classList.add('is-hover-none')
+        //     this.$container.classList.remove('is-hover-no')
+        //     this.$container.classList.remove('is-hover-yes')
+        // })
 
-        this.$no.addEventListener('mouseleave', () =>
-        {
-            this.$container.classList.add('is-hover-none')
-            this.$container.classList.remove('is-hover-no')
-            this.$container.classList.remove('is-hover-yes')
-        })
+        // this.$no.addEventListener('mouseleave', () =>
+        // {
+        //     this.$container.classList.add('is-hover-none')
+        //     this.$container.classList.remove('is-hover-no')
+        //     this.$container.classList.remove('is-hover-yes')
+        // })
     }
 
-    setLog()
-    {
-//         console.log(
-//             `%c 
-// ▶
-// ▶▶▶▶
-// ▶▶▶▶▶▶▶
-// ▶▶▶▶▶▶▶▶▶▶
-// ▶▶▶▶▶▶▶▶     ▶
-// ▶▶▶▶      ▶▶▶▶▶▶▶▶
-// ▶     ▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶
-//    ▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶
-//       ▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶      
-// ▶▶        ▶▶▶▶▶▶▶▶▶▶     ▶   ▶▶▶
-// ▶▶▶▶▶▶        ▶      ▶▶▶▶▶   ▶▶▶▶▶▶
-// ▶▶▶▶▶▶▶▶▶▶▶       ▶▶▶▶▶▶▶▶   ▶▶▶▶▶▶▶▶▶
-// ▶▶▶▶▶▶▶▶▶▶▶▶▶   ▶▶▶▶▶▶▶▶▶▶   ▶▶▶▶▶▶▶
-// ▶▶▶▶▶▶▶▶▶▶▶▶▶   ▶▶▶▶▶▶▶▶▶▶   ▶▶▶▶
-// ▶▶▶▶▶▶▶▶▶▶▶▶▶   ▶▶▶▶▶▶▶▶▶▶   ▶
-//  ▶▶▶▶▶▶▶▶▶▶▶▶   ▶▶▶▶▶▶▶▶▶▶
-//      ▶▶▶▶▶▶▶▶   ▶▶▶▶▶▶▶
-// ▶▶▶▶     ▶▶▶▶   ▶▶▶
-// ▶▶▶▶▶▶▶     ▶   
-// ▶▶▶▶▶▶▶▶▶▶
-// ▶▶▶▶▶▶▶
-// ▶▶
-//             `,
-//             'color: #705df2;'
-//         )
-        console.log('%cWhat are you doing here?! you sneaky developer...', 'color: #32ffce');
-        console.log('%cDo you want to learn how this portfolio has been made?', 'color: #32ffce');
-        console.log('%cCheckout Three.js Journey 👉 https://threejs-journey.com?c=p2', 'color: #32ffce');
-        console.log('%c— Bruno', 'color: #777777');
-    }
+
 
     hide()
     {
